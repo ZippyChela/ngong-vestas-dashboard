@@ -10,7 +10,9 @@ try:
 except FileNotFoundError:
     print("Error: Excel file not found. Ensure 'Vestas_SCADA_Alarm_Logs_2025.xls' is in the project directory.")
     exit()
-
+except Exception as e:
+    print (f"Error loading Excel File: {e}")
+    exit()
 
 # Convert date columns to datetime
 df['Detected'] = pd.to_datetime(df['Detected'], errors='coerce')
@@ -277,7 +279,7 @@ def update_dashboard(unit, severity, start_date, end_date):
 # Run the app
 if __name__ == '__main__':
     import os
-    port = int(os.environ.get('PORT',10000))
+    port = int(os.environ.get('PORT',8080))
     app.run(host = '0.0.0.0', port=port, debug=False)
 
 
