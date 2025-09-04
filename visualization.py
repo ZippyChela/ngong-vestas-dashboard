@@ -271,7 +271,7 @@ def update_dashboard(unit, severity, start_date, end_date):
 
 # Run the app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host = '0.0.0.0', port=port, debug=True)
 
 
 
