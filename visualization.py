@@ -87,6 +87,11 @@ pie_fig.update_layout(
 # Initialize the Dash app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+#Add health check endpoint
+@app.server.route('/health')
+def health_check():
+    return 'OK',200
+
 # Define the layout
 app.layout = dbc.Container([
     # Title
